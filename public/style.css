@@ -1,0 +1,341 @@
+#hero{
+    height:100vh;
+    width:100%;
+    background:blue;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+#hero video{
+    height:100vh;
+    width:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+#hero .w3-top{
+    z-index: 35;
+    
+}
+
+#hero .w3-bar{
+    z-index: 30;
+}
+
+#hero .w3-bar-item{
+    z-index: 30;
+}
+
+#hero .logo-container{
+  position: absolute;
+  top: 0px;             
+  width: 100%;           
+  pointer-events: none; /* optional: lets mouse/touch pass through */
+}
+
+#hero .caption{
+    position: relative;
+    top: 130px; 
+    z-index: 30;
+    text-align: center;
+    color: white;
+    user-select: none;
+}
+
+#hero .caption h1{
+    text-transform: uppercase;
+    font-size: 2em;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 0.5rem;
+}
+
+#hero .caption h2{
+    font-weight: 400;
+    font-size: 1.5em;
+    margin: 0;
+    font-family: 'PT San', sans-serif;
+    top: 130px; 
+}
+
+#about-me .caption{
+  text-align: center;
+  color:black;
+  user-select: none;
+}
+
+#about-me .caption p{
+  font-weight: 500;
+  font-size: 1.5em;
+  margin: 0;
+  font-family: 'PT San', sans-serif;
+}
+
+.chat-container {
+  margin: auto;
+  width: 400px;
+  max-width: 90%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.chat-box {
+  justify-content: center; 
+  align-items: center;
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+#terms-of-use .caption{
+  font-weight: 500;
+  font-size: 1.5em;
+  top: 0px;  
+  margin: 0;
+  font-family: 'PT San', sans-serif;
+
+}
+
+#about-me .caption h1{
+  text-transform: uppercase;
+  font-size: 3em;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 2rem;
+}
+
+#about-me .caption h2{
+  font-size: 2.5em;
+  font-family: 'Prosto One', sans-serif;
+  margin-top: 1rem;
+}
+
+#hero .logo-container img {
+  width: 100%;
+  height: auto;
+  max-width: 750px;
+}
+
+@media screen and (max-width:441px)
+{
+    #hero .caption h1{
+        font-size: 2rem;        
+    }
+    #hero .caption h2{
+        font-size: 2rem;     
+    }
+    #hero .logo-container img{
+      max-width: 300px;
+    }
+}
+
+@media screen and (min-width: 441px) and (max-width: 768px) 
+{
+    #hero .caption h1{
+        font-size: 2.5rem;        
+    }
+    #hero .caption h2{
+        font-size: 2.5rem;     
+    }
+    #hero .logo-container img{
+      max-width: 350px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) 
+{
+    #hero .caption h1{
+        font-size: 3rem;        
+    }
+    #hero .caption h2{
+        font-size: 3rem;     
+    }
+    #hero .logo-container img{
+      max-width: 400px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) 
+{
+    #hero .caption h1{
+        font-size: 4rem;        
+    }
+    #hero .caption h2{
+        font-size: 4rem;     
+    }
+    #hero .logo-container img{
+      width: 450px;
+    }
+}
+
+@media screen and (min-width: 1200px)
+{
+    #hero .caption h1{
+        font-size: 5rem;        
+    }
+    #hero .caption h2{
+        font-size: 5rem;     
+    }
+    #hero .logo-container img{
+      width: 525px;
+    }
+}
+
+body, html, #particles {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #particles {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center; 
+  }
+  
+  #particles h1 {
+    --fontSize: 60px;
+    --lineHeight: 80px;
+    width: auto;
+    height: calc(2 * var(--lineHeight));
+    line-height: var(--lineHeight);
+    margin: calc(50vh - var(--lineHeight)) auto 0;
+    font-size: var(--fontSize);
+    text-transform: uppercase;
+  }
+  
+  #particles a {
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  #particles canvas {
+    display: block;
+    position: absolute;
+    z-index: 25;
+    top: 0;
+    opacity: 0.55;
+    pointer-events: none;
+    touch-action: pan-y;
+  }
+
+  .icon-container {
+    position: relative; /* Needed for absolute positioning of the image */
+    display: inline-block; /* Or block, depending on how you want it to flow */
+    /*overflow: hidden; */
+  }
+  
+  .icon { 
+    transition: opacity 0.7s ease; /* Smooth transition for icon */
+  }
+
+  .java-icon {
+    position: absolute;
+    top: -5px;
+    left: -15px;
+    width: 125%; /* Or a specific width */
+    height: 100%; /* Or a specific height */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.7s ease; /* Smooth transition */
+    object-fit: cover; /* or contain, depending on how you want the image to fit */
+  }
+
+  .windows-icon {
+    position: absolute;
+    top: -5px;
+    left: -30px;
+    width: 125%; /* Or a specific width */
+    height: 100%; /* Or a specific height */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.7s ease; /* Smooth transition */
+    object-fit: cover; /* or contain, depending on how you want the image to fit */
+  }
+
+  .linux-icon {
+    position: absolute;
+    top: -5px;
+    left: 0px;
+    width: 100%; /* Or a specific width */
+    height: 100%; /* Or a specific height */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.7s ease; /* Smooth transition */
+    object-fit: cover; /* or contain, depending on how you want the image to fit */
+  }
+   
+  .icon-container:hover .java-icon {
+    opacity: 1; /* Shown on hover */
+  }
+  
+  .icon-container:hover .windows-icon {
+    opacity: 1; /* Shown on hover */
+  }
+  
+  .icon-container:hover .linux-icon {
+    opacity: 1; /* Shown on hover */
+  }
+  
+  .fa-java {
+    font-size: 135px;
+    opacity: 1;
+  }
+
+  .fa-windows {
+    font-size: 150px;
+    opacity: 1;
+  }
+
+  .fa-linux {
+    font-size: 150px;
+    opacity: 1;
+  }
+  
+  .icon-container:hover .icon {
+    opacity: 0; /* Hide icon on hover */
+  }
+  
+  .icon-container:hover .hover-image {
+    opacity: 1; /* Show image on hover */
+  }
+  
+  .w3-btn{
+      transition-duration: 1s;
+  }
+  
