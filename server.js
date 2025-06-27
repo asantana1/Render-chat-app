@@ -27,6 +27,7 @@ wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     const text = message.toString(); // Explicitly convert buffer to string
     console.log('Broadcasting message:', text);
+    ws.send(text);
 
     // Broadcast to ALL clients, including the sender
     wss.clients.forEach((client) => {
