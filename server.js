@@ -17,6 +17,7 @@ const wss = new WebSocket.Server({ server });
 const clients = new Set();
 
 wss.on('connection', (ws) => {
+  console.log('✅ New WebSocket client connected');
   clients.add(ws);
 
   ws.on('message', (message) => {
