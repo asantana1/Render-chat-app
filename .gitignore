@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+.env
+npm-debug.log*
+package-lock.json
+
+# OS-specific
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
