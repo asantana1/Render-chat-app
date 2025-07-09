@@ -10,34 +10,23 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Create HTTP server and WebSocket server
+// Create raw HTTP server
 const server = http.createServer(app);
 
-// ✅ Socket.IO for WebRTC signaling (voice chat)
-const io = socketIO(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST']
-  }
-});
-
-// ✅ WebSocket for text chat
-const wss = new WebSocket.Server({ server });
-
-
-// --- TEXT CHAT --- //
+// --- TEXT CHAT via WebSocket (manually upgraded on /ws) ---
+const wss = new WebSocket.Server({ noServer: true }); // Don't auto-attach to server
 const clients = new Set();
 
+
 wss.on('connection', (ws) => {
-  console.log('✅ New WebSocket client connected');
+  console.log('✅ New WebSocket (text chat) client connected');
   clients.add(ws);
 
   ws.on('message', (message) => {
-    const text = message.toString(); // Explicitly convert buffer to string
+    const text = message.toString();
     console.log('Broadcasting message:', text);
     ws.send(text);
 
-    // Broadcast to others
     for (const client of clients) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         client.send(text);
@@ -46,14 +35,20 @@ wss.on('connection', (ws) => {
   });
 
   ws.on('close', () => {
-     clients.delete(ws);
-     console.log('Client disconnected');
+    clients.delete(ws);
+    console.log('WebSocket client disconnected');
   });
 });
+// --- VOICE CHAT via Socket.IO ---
+const io = socketIO(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST']
+  }
+});
 
-// --- VOICE CHAT --- //
 io.on('connection', (socket) => {
-  console.log('🔊 New Socket.IO user connected');
+  console.log('🔊 New Socket.IO (voice chat) user connected');
 
   socket.on('offer', (data) => {
     socket.broadcast.emit('offer', data);
@@ -70,6 +65,17 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('Socket.IO user disconnected');
   });
+});
+
+// --- Custom Upgrade Handler for WebSocket ---
+server.on('upgrade', (request, socket, head) => {
+  if (request.url === '/ws') {
+    wss.handleUpgrade(request, socket, head, (ws) => {
+      wss.emit('connection', ws, request);
+    });
+  } else {
+    socket.destroy();
+  }
 });
 
 
