@@ -22,6 +22,9 @@ wss.on('connection', (ws) => {
   console.log('✅ New WebSocket (text chat) client connected');
   clients.add(ws);
 
+  // Notify client
+  ws.send(JSON.stringify({ type: 'connection', message: '✅ Connected to text chat server.' }));
+
   ws.on('message', (message) => {
     const text = message.toString();
     console.log('Broadcasting message:', text);
@@ -49,6 +52,9 @@ const io = socketIO(server, {
 
 io.on('connection', (socket) => {
   console.log('🔊 New Socket.IO (voice chat) user connected');
+
+  // Notify the client
+  socket.emit('connected', { message: '🔊 Connected to voice chat server.' });
 
   socket.on('offer', (data) => {
     socket.broadcast.emit('offer', data);
