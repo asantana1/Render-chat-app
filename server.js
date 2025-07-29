@@ -45,7 +45,7 @@ wss.on('connection', (ws) => {
 // --- VOICE CHAT via Socket.IO ---
 const io = socketIO(server, {
   cors: {
-    origin: '*',
+    origin: 'https://andersonlabs.dev',
     methods: ['GET', 'POST']
   }
 });
