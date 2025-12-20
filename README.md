@@ -42,7 +42,7 @@ MIT License - feel free to use this code for learning purposes
 
 ## 👤 Author
 **Anderson Santana**
-- Portfolio: [andersonlabs.dev](https://andersonlabs.dev)
+- Website: [andersonlabs.dev](https://andersonlabs.dev)
 - GitHub: [@asantana1](https://github.com/asantana1)
 - LinkedIn: [Anderson Santana](https://www.linkedin.com/in/anderson-santana-b524a718a)
 
