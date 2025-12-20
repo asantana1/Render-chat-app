@@ -4,29 +4,24 @@
 **[Try the Chat App](https://andersonlabs.dev/portfolio.html#chat-app)**
 
 ## 📝 Description
-A full-featured real-time communication platform supporting both text messaging and voice chat. Built with WebSockets for instant message delivery and WebRTC for peer-to-peer voice connections.
+A functional real-time communication platform with text chat and voice calling. Supports multiple text chat participants with WebSockets, and implements WebRTC for direct peer-to-peer voice connections between two users.
 
 ## 🛠️ Tech Stack
-**Frontend:**
-- HTML5, CSS3, JavaScript
-- Socket.IO Client
-- WebRTC for voice chat
-
-**Backend:**
-- Node.js / Express
-- Socket.IO for real-time communication
-- Deployed on Render
-
-**Database:**
-- Supabase (PostgreSQL)
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Backend:** Node.js, Express
+- **Real-time:** Socket.IO
+- **Voice:** WebRTC
+- **Deployment:** Render (backend), VPS (frontend)
 
 ## ✨ Features
 - ✅ Real-time text messaging with multiple users
-- ✅ Voice chat with join/leave controls
-- ✅ User agreement system with Terms of Use
-- ✅ Message history persistence
-- ✅ Responsive design for mobile and desktop
-- ✅ Loading states and connection indicators
+- ✅ Two-party voice chat via WebRTC
+- ✅ Terms of Use agreement system
+- ✅ Connection status indicators
+- ✅ Responsive design
+
+## 🎯 Key Implementation
+Built a signaling server using Socket.IO to facilitate WebRTC handshake between two peers, enabling direct peer-to-peer audio streaming without routing media through the server.
 
 ## 🎯 Challenges & Solutions
 
@@ -39,58 +34,6 @@ A full-featured real-time communication platform supporting both text messaging 
 **Challenge:** Managing connection states  
 **Solution:** Created custom loading animations and connection indicators to provide clear user feedback
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v14+)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
-```bash
-git clone https://github.com/yourusername/chat-app.git
-cd chat-app
-```
-
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Create `.env` file
-```env
-SUPABASE_URL=your_supabase_url
-SUPABASE_KEY=your_supabase_key
-PORT=3000
-```
-
-4. Start the server
-```bash
-npm start
-```
-
-5. Open `http://localhost:3000` in your browser
-
-## 📦 Dependencies
-```json
-{
-  "socket.io": "^4.x",
-  "express": "^4.x",
-  "@supabase/supabase-js": "^2.x"
-}
-```
-
-## 🔐 Environment Variables
-| Variable | Description |
-|----------|-------------|
-| `SUPABASE_URL` | Your Supabase project URL |
-| `SUPABASE_KEY` | Your Supabase API key |
-| `PORT` | Server port (default: 3000) |
-
-## 📸 Screenshots
-[Add screenshots here when ready]
-
 ## 🤝 Contributing
 This is a portfolio project, but feedback is welcome! Feel free to open an issue.
 
@@ -100,8 +43,8 @@ MIT License - feel free to use this code for learning purposes
 ## 👤 Author
 **Anderson Santana**
 - Portfolio: [andersonlabs.dev](https://andersonlabs.dev)
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [@asantana1](https://github.com/asantana1)
+- LinkedIn: [Anderson Santana](https://www.linkedin.com/in/anderson-santana-b524a718a)
 
 ---
 ⭐ If you found this project interesting, please give it a star!
