@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const io = socketIO(server, {
   cors: {
     origin: ["https://www.andersonlabs.dev", "https://andersonlabs.dev"],
-    methods: ['GET', 'POST']
+    methods: ['GET', 'POST'],
     credentials: true
   }
 });
