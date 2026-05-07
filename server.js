@@ -9,7 +9,6 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const bcrypt = require('bcrypt'); // For hashing passwords
 const bodyParser = require('body-parser');
-const jwt = require("jsonwebtoken");
 
 const app = express();
 
