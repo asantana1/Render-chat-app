@@ -1,4 +1,3 @@
-const { createClient } = require('@supabase/supabase-js');
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -8,20 +7,10 @@ dotenv.config();
 
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
-const { OpenAIApi } = require('openai');
 const bcrypt = require('bcrypt'); // For hashing passwords
 const bodyParser = require('body-parser');
 
 const nodemailer = require('nodemailer');
-
-
-// 3. Initialize supabase
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-);
-
-const SUPABASE_JWT_SECRET = process.env.SUPABASE_JWT_SECRET;
 
 const app = express();
 
@@ -52,23 +41,6 @@ app.set('trust proxy', 1);
 
 const port = process.env.PORT || 5000;
 
-// Supabase Auth
-function supabaseAuth(req, res, next) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader)
-    return res.status(401).json({ error: "No Authorization header" });
-
-  const token = authHeader.replace("Bearer ", "");
-
-  try {
-    const decoded = jwt.verify(token, SUPABASE_JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (err) {
-    console.error("JWT verify error:", err.message);
-    return res.status(401).json({ error: "Invalid or expired token" });
-  }
-}
 
 
 // Protect your admin dashboard route
@@ -120,40 +92,6 @@ app.use(express.json());
 // ============================================
 app.use('/portfolio', express.static(path.join(__dirname, 'react-portfolio/dist')));
 
-// ============================================
-// DASHBOARD API ROUTES 
-// ============================================
-// Get all contacts
-app.get('/api/contacts', supabaseAuth, async (req, res) => {
-  const { data, error } = await supabase.from('contact_messages').select('*');
-  if (error) return res.status(500).json({ error: error.message });
-  res.json(data);
-});
-
-// Update contact status
-app.put('/api/contacts/:id/status', async (req, res) => {
-  const { status } = req.body;
-  const { data, error } = await supabase
-    .from('contact_messages')
-    .update({ status })
-    .eq('id', req.params.id)
-    .select();
-
-  if (error) return res.status(500).json({ error: error.message });
-  res.json(data);
-});
-
-// Delete contact
-app.delete('/api/contacts/:id', async (req, res) => {
-  const { data, error } = await supabase
-    .from('contact_messages')
-    .delete()
-    .eq('id', req.params.id)
-    .select();
-
-  if (error) return res.status(500).json({ error: error.message });
-  res.json({ success: true });
-});
 
 
 // Serves all HTML/CSS/JS files
