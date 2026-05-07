@@ -97,15 +97,6 @@ app.use('/portfolio', express.static(path.join(__dirname, 'react-portfolio/dist'
 // Serves all HTML/CSS/JS files
 app.use(express.static('public'));
 
-// Configure OpenAI
-const OpenAI = require('openai');
-
-// Gets API from enviromental variable
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-
 
 // Create email transporter
 const transporter = nodemailer.createTransport({
