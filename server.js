@@ -11,7 +11,6 @@ const rateLimit = require('express-rate-limit');
 const { OpenAIApi } = require('openai');
 const bcrypt = require('bcrypt'); // For hashing passwords
 const bodyParser = require('body-parser');
-const pool = require('./db'); //MySQL pool
 const nodemailer = require('nodemailer');
 const jwt = require("jsonwebtoken");
 
