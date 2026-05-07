@@ -2,7 +2,6 @@ const { createClient } = require('@supabase/supabase-js');
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-@@ -8,30 +7,17 @@ dotenv.config();
 
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
@@ -33,7 +32,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // For unauthenticated users (based on IP)
 const chatLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
-@@ -47,445 +33,18 @@ const chatLimiter = rateLimit({
   }
 });
 
